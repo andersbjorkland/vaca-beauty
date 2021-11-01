@@ -10,8 +10,9 @@ class Product extends DataObject
 
     private static $db = [
         'Title' => 'Varchar(255)',
-        'Description' => 'HTMLText',
-        'Price' => 'Currency'
+        'Description' => 'Text',
+        'Price' => 'Money',
+        'ImageDescription' => 'Text'
     ];
 
     private static $table_name = 'Product';
