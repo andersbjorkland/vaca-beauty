@@ -13,5 +13,5 @@ class CustomAdmin extends ModelAdmin
 
     private static $url_segment = 'products';
 
-    private static $menu_title = 'Product Admin';
+    private static $menu_title = 'Products';
 }
