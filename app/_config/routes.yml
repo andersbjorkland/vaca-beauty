@@ -1,0 +1,6 @@
+---
+Name: routes
+---
+SilverStripe\Control\Director:
+  rules:
+    'products//$Action/$ID/$Name': 'ProductsController'
