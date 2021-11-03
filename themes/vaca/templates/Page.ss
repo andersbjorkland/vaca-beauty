@@ -31,7 +31,16 @@
         </div>
         <div id="products-pagination" class="pagination-container"></div>
     </section>
-
+    <% if $Contact %>
+    <section class="banner">
+        <div class="banner-image-container">
+            <img alt="image 2" src="/_resources/themes/vaca/images/banner2.jpg" loading="lazy">
+        </div>
+        <h2>$Contact.Title</h2>
+        <p>$Contact.Address</p>
+        <a href="mailto:$Contact.Email">Contact us</a>
+    </section>
+    <% else %>
     <section class="banner">
         <div class="banner-image-container">
             <img alt="image 2" src="/_resources/themes/vaca/images/banner2.jpg" loading="lazy">
@@ -40,6 +49,7 @@
         <p>47 Chandos Place, London, WC2N 4HS</p>
         <a href="#">Contact us</a>
     </section>
+    <% end_if %>
     <footer>
         <div class="inner-container">
             <img src="/_resources/themes/vaca/images/VACA-logo.svg" alt="">

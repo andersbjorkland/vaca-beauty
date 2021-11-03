@@ -2,20 +2,24 @@
 
 namespace {
 
-use SilverStripe\AssetAdmin\Forms\UploadField;
+    use App\Model\Contact;
+    use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
     use SilverStripe\CMS\Model\SiteTree;
+    use SilverStripe\Forms\DropdownField;
 
 class Page extends SiteTree
     {
         private static $db = [];
 
         private static $has_one = [
-            'Photo' => Image::class
+            'Photo' => Image::class,
+            'Contact' => Contact::class
         ];
 
         private static $owns = [
-            'Photo'
+            'Photo',
+            'Contact'
         ];
 
 
@@ -25,6 +29,12 @@ class Page extends SiteTree
             $fields->addFieldToTab('Root.Main', UploadField::create(
                 'Photo',
                 'Banner Photo'
+            ));
+
+            $fields->addFieldsToTab('Root.Main', DropdownField::create(
+                'ContactID',
+                'Contact',
+                Contact::get()->map('ID', 'Title')
             ));
 
             return $fields;
