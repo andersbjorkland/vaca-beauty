@@ -95,50 +95,35 @@
 
         function sortByPrice() {
             console.log("sort by price!");
-            fetch('/products?sortBy=PriceAmount&asc=0')
-            .then(response => {
-                return response.json();
-            })
-            .then(result => {
-                console.log(result);
-
-                const products = result.Products ?? null;
-                
-                let productsElements = null;
-
-                if (products) {
-                    productsContainer.innerHTML = "";
-                    for (let i = 0; i < products.length; i++) {
-                        productsElement = productTemplate(products[i].Title, products[i].Description, products[i].Image, products[i].ImageDescription, products[i].Price);
-                        productsContainer.appendChild(productsElement);
-                    }
-                }
-            })
-            .catch(error => console.error(error));
+            fetchBySort('PriceAmount');
         }
 
         function sortByNew() {
             console.log("sort by new!");
-            fetch('/products?sortBy=Created&asc=0')
-            .then(response => {
-                return response.json();
-            })
-            .then(result => {
-                console.log(result);
+            fetchBySort('Created');
+        }
 
-                const products = result.Products ?? null;
-                
-                let productsElements = null;
+        function fetchBySort(sortBy, sortAscending = false) {
+            fetch(`/products?sortBy=${sortBy}&asc=${sortAscending ? 1 : 0}`)
+                .then(response => {
+                    return response.json();
+                })
+                .then(result => {
+                    console.log(result);
 
-                if (products) {
-                    productsContainer.innerHTML = "";
-                    for (let i = 0; i < products.length; i++) {
-                        productsElement = productTemplate(products[i].Title, products[i].Description, products[i].Image, products[i].ImageDescription, products[i].Price);
-                        productsContainer.appendChild(productsElement);
+                    const products = result.Products ?? null;
+                    
+                    let productsElements = null;
+
+                    if (products) {
+                        productsContainer.innerHTML = "";
+                        for (let i = 0; i < products.length; i++) {
+                            productsElement = productTemplate(products[i].Title, products[i].Description, products[i].Image, products[i].ImageDescription, products[i].Price);
+                            productsContainer.appendChild(productsElement);
+                        }
                     }
-                }
-            })
-            .catch(error => console.error(error));
+                })
+                .catch(error => console.error(error));
         }
         
         fetchProducts();
