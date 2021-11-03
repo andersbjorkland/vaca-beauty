@@ -80,6 +80,16 @@ img {
   font-size: 1.8rem;
   line-height: 115%;
   text-align: center;
+  z-index: 1;
+}
+
+.banner a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid white;
+  padding: 0.5rem 1rem;
+  z-index: 1;
 }
 
 h2 {
@@ -122,6 +132,25 @@ h2 {
   row-gap: 1.5rem;
 }
 
+.pagination-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.pagination-container button {
+  padding: 0.25rem 0.75rem;
+  font-weight: 700;
+  border: none;
+  background: none;
+}
+
+.pagination-container button.active {
+  background-color: white;
+}
+
 .product h3 {
   margin-top: 1rem;
   font-size: 1.3rem;
@@ -154,3 +183,41 @@ h2 {
       -ms-grid-row-align: center;
       align-self: center;
 }
+
+footer {
+  width: 100%;
+  padding: 2rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer .inner-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 80%;
+}
+
+footer .inner-container > img {
+  width: 5rem;
+}
+
+footer .inner-container > div {
+  margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2rem;
+}
+
+footer .inner-container a {
+  text-decoration: none;
+  color: black;
+}
+/*# sourceMappingURL=styles.css.map */
