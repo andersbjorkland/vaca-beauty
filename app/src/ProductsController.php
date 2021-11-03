@@ -17,7 +17,28 @@ class ProductsController extends Controller
     public function index(HTTPRequest $request)
     {
 
-        $productQueryResult = Product::get()->limit(4);
+        $vars = $request->getVars();
+
+        $sort = null;
+        if (key_exists("sortBy", $vars)) {
+            $sort = $vars["sortBy"];
+        }
+
+        $asc = 'ASC';
+        if (key_exists("Asc", $vars)) {
+            if ($vars["Asc"] != 1) {
+                $asc = 'DESC';
+            }
+        }
+
+
+        $productQueryResult = null;
+        if ($sort) {
+            $productQueryResult = Product::get()->sort($sort, $asc)->limit(4);
+        } else {
+            $productQueryResult = Product::get()->limit(4);
+        }
+
         $products = [];
         foreach ($productQueryResult as $productResult) {
 
