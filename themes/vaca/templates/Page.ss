@@ -146,8 +146,6 @@
                 return response.json();
             })
             .then(result => {
-                console.log(result);
-
                 const products = result.Products ?? null;
                 
                 let productsElements = null;
@@ -169,24 +167,19 @@
         }
 
         function sortByPrice() {
-            console.log("sort by price!");
             fetchBySort('PriceAmount');
         }
 
         function sortByNew() {
-            console.log("sort by new!");
             fetchBySort('Created');
         }
 
         function paginationFetch(query) {
-            console.log("Pagination fetch!", query);
             fetch(query)
                 .then(response => {
                     return response.json();
                 })
                 .then(result => {
-                    console.log(result);
-
                     const products = result.Products ?? null;
                     
                     let productsElements = null;
@@ -214,7 +207,6 @@
                     return response.json();
                 })
                 .then(result => {
-                    console.log(result);
 
                     const products = result.Products ?? null;
                     
