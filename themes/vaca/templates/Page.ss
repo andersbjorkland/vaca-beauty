@@ -25,7 +25,7 @@
         <h2>View products</h2>
         <div class="button-container">
             <button class="btn bg-white" onclick="sortByPrice()">Price</button>
-            <button class="btn bg-white">New</button>
+            <button class="btn bg-white" onclick="sortByNew()">New</button>
         </div>
         <div id="products-container" class="grid-container">
         </div>
@@ -95,6 +95,50 @@
 
         function sortByPrice() {
             console.log("sort by price!");
+            fetch('/products?sortBy=PriceAmount&asc=0')
+            .then(response => {
+                return response.json();
+            })
+            .then(result => {
+                console.log(result);
+
+                const products = result.Products ?? null;
+                
+                let productsElements = null;
+
+                if (products) {
+                    productsContainer.innerHTML = "";
+                    for (let i = 0; i < products.length; i++) {
+                        productsElement = productTemplate(products[i].Title, products[i].Description, products[i].Image, products[i].ImageDescription, products[i].Price);
+                        productsContainer.appendChild(productsElement);
+                    }
+                }
+            })
+            .catch(error => console.error(error));
+        }
+
+        function sortByNew() {
+            console.log("sort by new!");
+            fetch('/products?sortBy=Created&asc=0')
+            .then(response => {
+                return response.json();
+            })
+            .then(result => {
+                console.log(result);
+
+                const products = result.Products ?? null;
+                
+                let productsElements = null;
+
+                if (products) {
+                    productsContainer.innerHTML = "";
+                    for (let i = 0; i < products.length; i++) {
+                        productsElement = productTemplate(products[i].Title, products[i].Description, products[i].Image, products[i].ImageDescription, products[i].Price);
+                        productsContainer.appendChild(productsElement);
+                    }
+                }
+            })
+            .catch(error => console.error(error));
         }
         
         fetchProducts();
